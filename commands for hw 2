@@ -1,0 +1,15 @@
+grep data-context-item index.html | while read x; do user=`expr "$x" : ".*data-context-item-user=\"\(.*\)\" data-context-item-title.*"`; echo $user; done
+
+grabs user
+
+grep data-context-item index.html | while read x; do time=`expr "$x" : ".*data-context-item-time=\"\(.*\)\" data.*"`; echo $time; done 
+
+grabs time
+
+grep data-context-item index.html | while read x; do title=`expr "$x" : ".*data-context-item-title=\"\(.*\)\" data-context-item-time.*"`; echo $title; done
+
+grabs title
+
+grep data-context-item index.html | while read x; do views=`expr "$x" : ".*data-context-item-views=\"\(.*\) views.*"`; echo ${views//,/}; done
+
+grabs views
