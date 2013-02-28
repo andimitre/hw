@@ -1,15 +1,16 @@
-grep data-context-item index.html | while read x; do user=`expr "$x" : ".*data-context-item-user=\"\(.*\)\" data-context-item-title.*"`; echo $user; done
-
 grabs user
-
-grep data-context-item index.html | while read x; do time=`expr "$x" : ".*data-context-item-time=\"\(.*\)\" data.*"`; echo $time; done 
+grep data-context-item index.html | while read x; do user=`expr "$x" : ".*data-context-item-user=\"\(.*\)\" data-context-item-title.*"`; echo $user; done > user.txt
 
 grabs time
-
-grep data-context-item index.html | while read x; do title=`expr "$x" : ".*data-context-item-title=\"\(.*\)\" data-context-item-time.*"`; echo $title; done
+grep data-context-item index.html | while read x; do time=`expr "$x" : ".*data-context-item-time=\"\(.*\)\" data.*"`; echo $time; done > time.txt
 
 grabs title
-
-grep data-context-item index.html | while read x; do views=`expr "$x" : ".*data-context-item-views=\"\(.*\) views.*"`; echo ${views//,/}; done
+grep data-context-item index.html | while read x; do title=`expr "$x" : ".*data-context-item-title=\"\(.*\)\" data-context-item-time.*"`; echo $title; done > title.txt
 
 grabs views
+grep data-context-item index.html | while read x; do views=`expr "$x" : ".*data-context-item-views=\"\(.*\) views.*"`; echo ${views//,/}; done > views.txt
+
+
+paste or make table 
+
+paste user.txt views2.txt time.txt title.txt > mytable.txt
